@@ -16,12 +16,13 @@ function LoginForm() {
   };
 
   return (
-    <div className="App">
+    <div className="center">
+    <h1>Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-control">
-          <label>Email</label>
+        <div className="txt_field">
           <input
             type="text"
+            placeholder="Enter your email address"
             name="email"
             {...register("email", {
               required: "Email is required.",
@@ -34,11 +35,11 @@ function LoginForm() {
             <p className="errorMsg">Email is not valid.</p>
           )}
         </div>
-        <div className="form-control">
-          <label>Password</label>
+        <div className="txt_field">
           <input
             type="password"
             name="password"
+            placeholder="Enter your password!"
             {...register("password", {
               required: "Password is required.",
               minLength: {
@@ -50,15 +51,11 @@ function LoginForm() {
           {errors.password && (
             <p className="errorMsg">{errors.password.message}</p>
           )}
-          {errors.password?.type === "minLength" && (
-            <p className="errorMsg">
-              Password should be at-least 6 characters.
-            </p>
-          )}
         </div>
-        <div className="form-control">
-          <label></label>
-          <button type="submit">Login</button>
+        <div className="pass">Forgot Password?</div>
+        <button type="submit">Login</button>
+        <div className="signup_link">
+          Don't have an account? <a href="#">Signup</a>
         </div>
       </form>
     </div>
