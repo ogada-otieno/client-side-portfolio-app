@@ -10,7 +10,9 @@ import Home from "./Pages/Home";
 import LandingPage from "./Pages/LandingPage";
 import CreateSkills from './Components/CreateSkills';
 import CreateProject from './Components/CreateProject';
+import CreateProfile from "./Components/CreateProfile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/create-skills" element={<CreateSkills />} />
           <Route exact path="/create-projects" element={<CreateProject />} />
+          <Route exact path="/create-profile" element={<CreateProfile />} />
         </Routes>
       </div>
       {/* <Footer /> */}
