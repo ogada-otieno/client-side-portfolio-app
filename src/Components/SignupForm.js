@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import * as yup from "yup";
+// import {yupResolver} from "@hookform/resolvers/yup";
+// import * as yup from "yup";
 
 // resources for yup validation:
 // 1. https://www.npmjs.com/package/yup
@@ -26,33 +26,20 @@ const SignupForm = () => {
       <h1>Signup</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="txt_field">
-          <input type="text" name="first_name" placeholder="First name"
-          {...register("first_name", {
-              required: "First name is required.",
+          <input type="text" name="full_name" placeholder="Enter your full name"
+          {...register("full_name", {
+              required: "Name is required.",
               minLength: {
                 value: 2,
-                message: "First name must be at-least 2 characters.",
+                message: "Name must be at-least 2 characters.",
               },
             })}
            />
            {errors.first_name && (
-            <p className="errorMsg">{errors.first_name.message}</p>
+            <p className="errorMsg">{errors.full_name.message}</p>
           )}
         </div>
-        <div className="txt_field">
-          <input type="text" name="last_name" placeholder="Last name" 
-            {...register("last_name", {
-              required: "Last name is required.",
-              minLength: {
-                value: 2,
-                message: "Last name must be at-least 2 characters.",
-              },
-            })}
-          />
-          {errors.last_name && (
-            <p className="errorMsg">{errors.last_name.message}</p>
-          )}
-        </div>
+        
         <div className="txt_field">
           <input
             type="text"
@@ -73,7 +60,7 @@ const SignupForm = () => {
           <input
             type="password"
             name="password"
-            placeholder="Enter your password!"
+            placeholder="Enter your password"
             {...register("password", {
               required: "Password is required.",
               minLength: {
@@ -85,6 +72,9 @@ const SignupForm = () => {
           {errors.password && (
             <p className="errorMsg">{errors.password.message}</p>
           )}
+        </div>
+        <div className="txt_field">
+          <input type="password" name="password" placeholder="Confirm password" />
         </div>
         <button type="submit">Register</button>
         <div className="signup_link">

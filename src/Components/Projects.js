@@ -11,6 +11,7 @@ function Projects() {
       .get("http://localhost:9292/projects/1")
       .then((res) => {
         const fetchedProjects = res.data;
+        // console.log(fetchedProjects);
         setprojects(fetchedProjects);
       })
       .catch((err) => console.log(err));
@@ -36,6 +37,7 @@ function Projects() {
 
   return (
     <>
+    PROJECTS
         {renderprojects.length > 0 ? (
           <>{renderprojects}</>
         ) : (
