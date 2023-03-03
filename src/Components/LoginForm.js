@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   const {
@@ -17,7 +18,7 @@ function LoginForm() {
 
   return (
     <div className="center">
-    <h1>Login</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="txt_field">
           <input
@@ -55,7 +56,7 @@ function LoginForm() {
         <div className="pass">Forgot Password?</div>
         <button type="submit">Login</button>
         <div className="signup_link">
-          Don't have an account? <a href="#">Signup</a>
+          Don't have an account? <Link to="/signup">Signup</Link>
         </div>
       </form>
     </div>
