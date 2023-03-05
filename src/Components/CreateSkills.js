@@ -1,21 +1,19 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const CreateSkills = () => {
   const [skill, setSkill] = React.useState("");
 
-  //   const location = useLocation();
-
-  //   let id = new URLSearchParams(location.search).get("id");
-  //   console.log(id);
+  const { user } = useAuthContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     let newSkill = { skill };
 
-    let url = "http://localhost:9292/create-skill/1";
+    let url = `http://localhost:9292/create-skill/${user.user_id}`;
 
     axios
       .post(url, newSkill)
@@ -34,7 +32,6 @@ const CreateSkills = () => {
         <input
           type="text"
           name="skill"
-          // value{skill}
           placeholder="Enter skill"
           onChange={(e) => setSkill(e.target.value)}
         />
