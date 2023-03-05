@@ -11,6 +11,8 @@ function Projects() {
   const user = JSON.parse(localStorage.getItem("user"));
   let id = user.user_id;
 
+  
+
   const fetchProjects = () => {
     axios
       .get(`http://localhost:9292/projects/${id}`)
@@ -26,6 +28,19 @@ function Projects() {
     fetchProjects();
   }, []);
 
+  function handleUpdate(projectId) {
+    window.location.href = `/create-projects/?id=${projectId}`;
+  }
+
+  function handleDelete(projectId) {
+    axios
+      .delete(`http://localhost:9292/delete-project/${id}/${projectId}`)
+      .then((res) => {
+        fetchProjects();
+      })
+      .catch((err) => console.log(err));
+  }
+
   const renderprojects = projects.map((project) => {
     return (
       <div className="list-projects" key={project.id}>
@@ -35,6 +50,10 @@ function Projects() {
           <img src={project.image_url} alt="Project image" />
           <p>Created: {project.created_at}</p>
           <p>Updated: {project.updated_at}</p>
+        </div>
+        <div className="update-delete">
+          <button onClick={() => handleUpdate(project.id)}>Update</button>
+          <button onClick={() => handleDelete(project.id)}>Delete</button>
         </div>
       </div>
     );

@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Skills from "./Skills";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // displays user profile and skills.
 
 const Profile = () => {
   const [userProfile, setUserProfile] = useState([]);
 
+  const { user } = useAuthContext();
+
+  const userDetails = JSON.parse(localStorage.getItem("user"));
+  console.log(userDetails);
+  let id = userDetails.user_id;
+  console.log(id);
+
   const fetchProfile = () => {
     axios
-      .get("http://localhost:9292/user/1")
+      .get(`http://localhost:9292/user/${id}`)
       .then((res) => {
         const fetchedProfile = res.data;
+        console.log(fetchedProfile);
         setUserProfile(fetchedProfile);
       })
       .catch((err) => console.log(err));

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuthContext } from "../hooks/useAuthContext";
+import {useLocation, useNavigate} from "react-router-dom";
+
 
 const CreateProfile = () => {
   const [name, SetName] = useState("");
@@ -16,6 +18,8 @@ const CreateProfile = () => {
   const [email, SetEmail] = useState("");
 
   const { user } = useAuthContext();
+
+  
 
   const handleChange = (e) => {
     e.preventDefault();

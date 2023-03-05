@@ -6,7 +6,12 @@ function Skills() {
   const [skills, setSkills] = React.useState([]);
   const { user } = useAuthContext();
 
-  let url = `http://localhost:9292/skills/${user.user_id}` 
+  const userDetails = JSON.parse(localStorage.getItem("user"));
+  console.log(userDetails);
+  let id = userDetails.user_id;
+  console.log(id);
+
+  let url = `http://localhost:9292/skills/${id}` 
 
   const fetchSkills = () => {
     axios
