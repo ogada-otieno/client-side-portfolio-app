@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function Skills() {
   const [skills, setSkills] = React.useState([]);
+  const { user } = useAuthContext();
+
+  let url = `http://localhost:9292/skills/${user.user_id}` 
 
   const fetchSkills = () => {
     axios
-      .get("http://localhost:9292/skills/1")
+      .get(url)
       .then((res) => {
         const data = res.data;
         setSkills(data);
