@@ -11,16 +11,16 @@ const Profile = () => {
   const { user } = useAuthContext();
 
   const userDetails = JSON.parse(localStorage.getItem("user"));
-  console.log(userDetails);
+  // console.log(userDetails);
   let id = userDetails.user_id;
-  console.log(id);
+  // console.log(id);
 
   const fetchProfile = () => {
     axios
       .get(`http://localhost:9292/user/${id}`)
       .then((res) => {
         const fetchedProfile = res.data;
-        console.log(fetchedProfile);
+        // console.log(fetchedProfile);
         setUserProfile(fetchedProfile);
       })
       .catch((err) => console.log(err));

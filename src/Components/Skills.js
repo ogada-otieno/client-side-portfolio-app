@@ -7,11 +7,11 @@ function Skills() {
   const { user } = useAuthContext();
 
   const userDetails = JSON.parse(localStorage.getItem("user"));
-  console.log(userDetails);
+  // console.log(userDetails);
   let id = userDetails.user_id;
-  console.log(id);
+  // console.log(id);
 
-  let url = `http://localhost:9292/skills/${id}` 
+  let url = `http://localhost:9292/skills/${id}`;
 
   const fetchSkills = () => {
     axios
@@ -27,12 +27,31 @@ function Skills() {
     fetchSkills();
   }, []);
 
+  const handleUpdate = (skillId) => {
+    window.location.href = `/create-skills/?id=${skillId}`;
+  };
+
+  const handleDelete = (skillId) => {
+    axios
+      .delete(`http://localhost:9292/delete-skill/${id}/${skillId}`)
+      .then((res) => {
+        fetchSkills();
+      })
+      .catch((err) => console.log(err));
+  };
+
   const renderSkills = skills.map((skill) => {
     return (
       <div className="skills" key={skill.id}>
-        <ul>
-          <li>{skill.skill}</li>
-        </ul>
+        <div>
+          <ul>
+            <li>{skill.skill}</li>
+          </ul>
+        </div>
+        <div>
+          <button onClick={() => handleUpdate(skill.id)}>Update</button>
+          <button onClick={() => handleDelete(skill.id)}>Delete</button>
+        </div>
       </div>
     );
   });
