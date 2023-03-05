@@ -6,9 +6,13 @@ import axios from "axios";
 function Projects() {
   const [projects, setprojects] = useState([]);
 
+  // grab user's id from local storage.
+  const user = JSON.parse(localStorage.getItem("user"));
+  let id = user.user_id 
+
   const fetchProjects = () => {
     axios
-      .get("http://localhost:9292/projects/1")
+      .get(`http://localhost:9292/projects/${id}`)
       .then((res) => {
         const fetchedProjects = res.data;
         // console.log(fetchedProjects);
