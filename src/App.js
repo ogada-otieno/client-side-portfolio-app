@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import LoginForm from "./Components/LoginForm";
 import SignupForm from "./Components/SignupForm";
 import Projects from "./Components/Projects";
@@ -17,7 +17,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="app-body">
         <Routes>
           <Route exact path="/login" element={<LoginForm />} />

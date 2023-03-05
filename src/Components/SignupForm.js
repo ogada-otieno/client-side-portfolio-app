@@ -1,87 +1,50 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-// import {yupResolver} from "@hookform/resolvers/yup";
-// import * as yup from "yup";
-
-// resources for yup validation:
-// 1. https://www.npmjs.com/package/yup
-// 2. https://www.positronx.io/add-confirm-password-validation-in-react-with-hook-form/
+import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
 
 const SignupForm = () => {
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { signup, error, isLoading } = useSignup();
 
-  const onSubmit = (data) => {
-    // console.log(data);
-    // console.log({ ...register("email") });
-    reset();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await signup(name, email, username, password);
   };
 
   return (
-    <div className="center">
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="txt_field">
-          <input type="text" name="full_name" placeholder="Enter your full name"
-          {...register("full_name", {
-              required: "Name is required.",
-              minLength: {
-                value: 2,
-                message: "Name must be at-least 2 characters.",
-              },
-            })}
-           />
-           {errors.first_name && (
-            <p className="errorMsg">{errors.full_name.message}</p>
-          )}
-        </div>
-        
-        <div className="txt_field">
-          <input
-            type="text"
-            placeholder="Email address"
-            name="email"
-            {...register("email", {
-              required: "Email is required.",
-              pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-              message: "Email is not valid",
-            })}
-          />
-          {errors.email && <p className="errorMsg">{errors.email.message}</p>}
-          {errors.email?.type === "pattern" && (
-            <p className="errorMsg">Email is not valid.</p>
-          )}
-        </div>
-        <div className="txt_field">
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            {...register("password", {
-              required: "Password is required.",
-              minLength: {
-                value: 6,
-                message: "Password must be atleast 6 characters.",
-              },
-            })}
-          />
-          {errors.password && (
-            <p className="errorMsg">{errors.password.message}</p>
-          )}
-        </div>
-        <div className="txt_field">
-          <input type="password" name="password" placeholder="Confirm password" />
-        </div>
-        <button type="submit">Register</button>
-        <div className="signup_link">
-          Already registered? <a href="#">Login</a>
-        </div>
-      </form>
-    </div>
+    <form className="signup" onSubmit={handleSubmit}>
+      <h3>Sign Up</h3>
+      <label>Name:</label>
+      <input
+        type="text"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+      />
+      <label>Email address:</label>
+      <input
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
+      <label>Username:</label>
+      <input 
+        type="text" 
+        onChange={(e) => setUsername(e.target.value)} 
+        value={username}
+      />
+      <label>Password:</label>
+      <input
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
+
+      <button disabled={isLoading}>Sign up</button>
+      {error && <div className="error">{error}</div>}
+    </form>
   );
 };
 
