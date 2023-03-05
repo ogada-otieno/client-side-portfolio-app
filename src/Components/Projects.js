@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // holds all the projects under a user.
 
@@ -8,7 +9,7 @@ function Projects() {
 
   // grab user's id from local storage.
   const user = JSON.parse(localStorage.getItem("user"));
-  let id = user.user_id 
+  let id = user.user_id;
 
   const fetchProjects = () => {
     axios
@@ -41,12 +42,15 @@ function Projects() {
 
   return (
     <>
-    PROJECTS
-        {renderprojects.length > 0 ? (
-          <>{renderprojects}</>
-        ) : (
-          <p>You do not have any projects...Add your first project?</p>
-        )}
+      PROJECTS
+      {renderprojects.length > 0 ? (
+        <>{renderprojects}</>
+      ) : (
+        <p>
+          You do not have any projects...Add your
+          <Link to="/create-projects">first project?</Link>
+        </p>
+      )}
     </>
   );
 }
