@@ -23,11 +23,11 @@ function App() {
       <div className="app-body">
         <Routes>
           <Route exact path="/login" 
-          element={!user ? <LoginForm /> : <Navigate to="/home" />} />
+          element={!user ? <LoginForm /> : <Navigate to="/" />} />
           <Route
             exact
             path="/signup"
-            element={!user ? <SignupForm /> : <Navigate to="/home" />}
+            element={!user ? <SignupForm /> : <Navigate to="/" />}
           />
           <Route exact path="/projects" element={<Projects />} />
           <Route exact path="/profile" element={<Profile />} />
