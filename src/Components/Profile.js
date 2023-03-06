@@ -37,7 +37,7 @@ const Profile = () => {
     return (
       <div className="profile" key={user.id}>
         <h4>{user.name}</h4>
-        <h4>{user.speciality}</h4>
+        {/* <h4>{user.speciality}</h4>
         <img src={user.avatar_url} alt="profile image" />
         <h4>{user.email}</h4>
         <h4>{user.experience}</h4>
@@ -47,21 +47,21 @@ const Profile = () => {
         <h4>{user.date_of_birth}</h4>
         <h4>{user.locale}</h4>
         <h4>{user.address}</h4>
-        <h4>{user.education}</h4>
+        <h4>{user.education}</h4> */}
       </div>
     );
   });
 
   return (
     <>
-      <div>
+      {/* <div>
         <h4>PROFILE</h4>
         {renderProfile.length > 0 ? (
           <>{renderProfile}</>
         ) : (
           <p>You haven't created a profile. Update here?</p>
         )}
-      </div>
+      </div> */}
       <div>
         <Skills />
       </div>

@@ -20,7 +20,7 @@ const Navbar = () => {
             <div className="menu">
               <Link to="/create-projects">Add Project</Link>
               <Link to="/create-skills">Add Skill</Link> <br />
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile">Skills</Link>
               <Link to="/create-profile">Update Profile</Link>
               <Link to="/projects">Projects</Link>
             </div>
