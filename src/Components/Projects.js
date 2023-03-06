@@ -11,8 +11,6 @@ function Projects() {
   const user = JSON.parse(localStorage.getItem("user"));
   let id = user.user_id;
 
-  
-
   const fetchProjects = () => {
     axios
       .get(`http://localhost:9292/projects/${id}`)
@@ -45,22 +43,30 @@ function Projects() {
     return (
       <div className="list-projects" key={project.id}>
         <div className="single-project">
-          <h4 className="title">{project.title}</h4>
-          <p>{project.description}</p>
-          <img src={project.image_url} alt="Project image" />
-          <p>Created: {project.created_at}</p>
-          <p>Updated: {project.updated_at}</p>
-        </div>
-        <div className="update-delete">
-          <button onClick={() => handleUpdate(project.id)}>Update</button>
-          <button onClick={() => handleDelete(project.id)}>Delete</button>
+          <div className="img-cls">
+            <img src={project.image_url} alt="Project image" />
+          </div>
+          <div className="details">
+            <h4 className="title">{project.title}</h4>
+            <p>{project.description}</p>
+            <div className="update-delete">
+              <button onClick={() => handleUpdate(project.id)}>Update</button>
+              <span
+                className="material-symbols-outlined"
+                onClick={() => handleDelete(project.id)}
+              >
+                delete
+              </span>
+              {/* <button onClick={() => handleDelete(project.id)}>Delete</button> */}
+            </div>
+          </div>
         </div>
       </div>
     );
   });
 
   return (
-    <>
+    <div className="all-projects">
       PROJECTS
       {renderprojects.length > 0 ? (
         <>{renderprojects}</>
@@ -70,7 +76,7 @@ function Projects() {
           <Link to="/create-projects">first project?</Link>
         </p>
       )}
-    </>
+    </div>
   );
 }
 

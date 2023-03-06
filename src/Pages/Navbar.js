@@ -7,6 +7,7 @@ const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
 
+
   const handleClick = () => {
     logout();
   };
@@ -16,24 +17,26 @@ const Navbar = () => {
       <div className="nav-container">
         <nav>
           {user && (
-            <div>
-              <span>Email: {user.email}</span> <br />
-              <span>User ID: {user.user_id}</span> <br />
-              <Link to="/create-projects">Add Project</Link> <br />
+            <div className="menu">
+              <Link to="/create-projects">Add Project</Link>
               <Link to="/create-skills">Add Skill</Link> <br />
-              <Link to="/profile">Profile</Link> <br />
-              <Link to="/create-profile">Update Profile</Link> <br />
-              <Link to="/projects">Projects</Link> <br />
-              <button onClick={handleClick}>Log out</button>
+              <Link to="/profile">Profile</Link>
+              <Link to="/create-profile">Update Profile</Link>
+              <Link to="/projects">Projects</Link>
             </div>
           )}
-          {!user && (
-            <div>
-              
-              <Link to="/login">Login</Link> <br />
-              <Link to="/signup">Signup</Link>
-            </div>
-          )}
+          <div className="logins">
+            {user ? (
+              <div>
+                <button onClick={handleClick}>Logout</button>
+              </div>
+            ) : (
+              <div>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Signup</Link>
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </header>

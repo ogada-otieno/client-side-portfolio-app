@@ -37,7 +37,7 @@ function App() {
           <Route exact path="/create-skills" element={<CreateSkills />} />
           <Route exact path="/create-projects" element={<CreateProject />} />
           <Route exact path="/create-profile" element={<CreateProfile />} />
-        </Routes>
+         </Routes>
       </div>
       {/* <Footer /> */}
     </BrowserRouter>

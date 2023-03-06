@@ -44,13 +44,17 @@ function Skills() {
     return (
       <div className="skills" key={skill.id}>
         <div>
-          <ul>
-            <li>{skill.skill}</li>
-          </ul>
+          <p>{skill.skill}</p>
         </div>
         <div>
           <button onClick={() => handleUpdate(skill.id)}>Update</button>
-          <button onClick={() => handleDelete(skill.id)}>Delete</button>
+          <span
+            className="material-symbols-outlined"
+            onClick={() => handleDelete(skill.id)}
+          >
+            delete
+          </span>
+          {/* <button onClick={() => handleDelete(skill.id)}>Delete</button> */}
         </div>
       </div>
     );

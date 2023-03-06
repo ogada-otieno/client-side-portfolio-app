@@ -75,6 +75,7 @@ const CreateProject = () => {
           placeholder="Enter project title"
           onChange={(e) => setTitle(e.target.value)}
         />
+        <label >Description</label>
         <textarea
           name="description"
           type="text"
@@ -82,10 +83,11 @@ const CreateProject = () => {
           rows="10"
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
+        <label >Image link</label>
         <input
           type="text"
           name="image_url"
-          placeholder="Enter image url"
+          placeholder="Enter image link"
           onChange={(e) => setImage(e.target.value)}
         />
         {!isPending && (

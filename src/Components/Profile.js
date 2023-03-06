@@ -54,17 +54,17 @@ const Profile = () => {
 
   return (
     <>
-      <>
+      <div>
         <h4>PROFILE</h4>
         {renderProfile.length > 0 ? (
           <>{renderProfile}</>
         ) : (
           <p>You haven't created a profile. Update here?</p>
         )}
-      </>
-      <>
+      </div>
+      <div>
         <Skills />
-      </>
+      </div>
     </>
   );
 };
