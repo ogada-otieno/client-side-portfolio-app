@@ -51,13 +51,7 @@ function Projects() {
             <p>{project.description}</p>
             <div className="update-delete">
               <button onClick={() => handleUpdate(project.id)}>Update</button>
-              <span
-                className="material-symbols-outlined"
-                onClick={() => handleDelete(project.id)}
-              >
-                delete
-              </span>
-              {/* <button onClick={() => handleDelete(project.id)}>Delete</button> */}
+              <button onClick={() => handleDelete(project.id)}>Delete</button>
             </div>
           </div>
         </div>

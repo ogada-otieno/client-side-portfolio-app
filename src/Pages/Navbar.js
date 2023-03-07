@@ -20,6 +20,7 @@ const Navbar = () => {
         <nav>
           {user && (
             <div className="menu">
+              <Link to="/">Home</Link>
               <Link to="/create-projects">Add Project</Link>
               <Link to="/create-skills">Add Skill</Link> <br />
               <Link to="/profile">Skills</Link>
@@ -34,6 +35,7 @@ const Navbar = () => {
               </div>
             ) : (
               <div>
+                <Link to="/">Home</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/signup">Signup</Link>
               </div>

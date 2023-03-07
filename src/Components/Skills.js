@@ -48,13 +48,7 @@ function Skills() {
         </div>
         <div>
           <button onClick={() => handleUpdate(skill.id)}>Update</button>
-          <span
-            className="material-symbols-outlined"
-            onClick={() => handleDelete(skill.id)}
-          >
-            delete
-          </span>
-          {/* <button onClick={() => handleDelete(skill.id)}>Delete</button> */}
+          <button onClick={() => handleDelete(skill.id)}>Delete</button>
         </div>
       </div>
     );

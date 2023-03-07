@@ -14,6 +14,8 @@ import CreateProfile from "./Components/CreateProfile";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
+
+
 function App() {
   const { user } = useAuthContext();
 
